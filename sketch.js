@@ -1,7 +1,7 @@
 //variáveis da bolinha
 let xBolinha = 100;
 let yBolinha = 200;
-let diametro = 22;
+let diametro = 20;
 let raio = diametro / 2;
 
 //variáveis do oponente
@@ -66,11 +66,11 @@ function mostraRaquete(x,y) {
 }
 
 function movimentaMinhaRaquete() {
-  if(keyIsDown(UP_ARROW)) {
-    yRaquete -= 10;
+  if(keyIsDown(87)) {
+    yRaqueteOponente -= 10;
   }
-  if(keyIsDown(DOWN_ARROW)) {
-    yRaquete += 10;
+  if(keyIsDown(83)) {
+    yRaqueteOponente += 10;
   }
 }
 
@@ -88,22 +88,40 @@ function verificaColisaoRaquete(x, y) {
 }
 
 function movimentaRaqueteOponente() {
-    velocidadeYOponente = yBolinha - yRaqueteOponente - raqueteComprimento / 2 - 30;
-    yRaqueteOponente += velocidadeYOponente
+   
+  if(keyIsDown(UP_ARROW)) {
+    yRaquete -= 10;
+  }
+  if(keyIsDown(DOWN_ARROW)) {
+    yRaquete += 10;
+  }
 }
 
-function incluiPlacar() {
-  fill(255);
-  text(meusPontos, 278, 26);
-  text(pontosDoOponente, 321, 26);
+
+function incluiPlacar(){
+  stroke(255)
+    textAlign(CENTER);
+    textSize(16);
+    fill(color(255,140, 0));
+    rect(150, 10, 40, 20);
+    fill(255);
+    text(meusPontos, 170, 26);
+    fill(color(255,140, 0));
+    rect(450, 10, 40, 20);
+    fill(255);
+    text(pontosDoOponente, 470, 26);
+
+
+
 }
+
 
 function marcaPonto() {
   if (xBolinha > 580) {
     meusPontos += 1;
   }
-  if (xBolinha < 11) {
-    pontosDoOponente += 1;
+  if (xBolinha < 10) {
+    pontosDoOponente += 3;
   }
 }
 
